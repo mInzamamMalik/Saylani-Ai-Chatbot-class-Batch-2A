@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .sectionOne {
+            display: flex;
+            height: 600px;
+            background-color: aliceblue;
+            flex-wrap: wrap;
+        }
+
+        .sectionTwo {
+            height: 600px;
+            background-color: #353A45;
+        }
+
+        .sectionOne>.left {
+            display: flex;
+            height: 600px;
+            width: 30%;
+            /* border: 5px solid green; */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sectionOne>.left>img {
+            border-radius: 50%;
+        }
+
+        .sectionOne>.right {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+            /* padding-left: 30px; */
+            margin-left: 30px;
+
+            height: 600px;
+            /* width: 70%; */
+            /* border: 5px solid red; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
+
+
+    <div class="sectionOne">
+
+        <div class="left">
+
+            <img src="./img/profile.jpeg" alt="">
+
+        </div>
+
+        <div class="right">
+            <h1>Some Full Name</h1>
+
+            <h3>senior software developer</h3>
+
+            <p>This defines a flex container; inline or block depending on the given value. It enables a flex context
+                for all its direct children.</p>
+
+        </div>
+
+    </div>
+
+    <!-- 
+    <div class="sectionTwo">
+
+    </div> -->
+
+
+
+</body>
+
+</html>
