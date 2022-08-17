@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Condition Checking with if else</h1>
+
+    <form onsubmit="doSum(); return false">
+        num1: <input id="num1" type="number" required placeholder="enter a number">
+        <br>
+        operation: <input id="operation" type="text" placeholder="enter + - * /" required>
+        <br>
+        num2: <input id="num2" type="number" required placeholder="enter second number">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <h3 id="result"> </h3>
+
+    <script>
+        function doSum() {
+            let firstNumber = +document.querySelector("#num1").value
+            let secondNumber = +document.querySelector("#num2").value
+            let operation = document.querySelector("#operation").value
+
+            let resultElement = document.querySelector("#result")
+
+            if (operation === "+") {
+                resultElement.innerHTML = firstNumber + secondNumber
+
+            } else if (operation === "-") {
+                resultElement.innerHTML = firstNumber - secondNumber
+
+            } else if (operation === "*") {
+                resultElement.innerHTML = firstNumber * secondNumber
+
+            } else if (operation === "/") {
+
+                if (secondNumber === 0) {
+                    resultElement.innerHTML = "Cannot divide by 0"
+                } else {
+                    resultElement.innerHTML = firstNumber / secondNumber;
+                }
+                
+            } else {
+                resultElement.innerHTML = "invalid operation"
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>
