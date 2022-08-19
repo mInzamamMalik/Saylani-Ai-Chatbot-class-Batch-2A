@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Condition Checking in depth</h1>
+
+    <script>
+
+        // let userInput = +prompt("enter a number:");
+
+        // if(  userInput === 5  ){
+
+        //     console.log("I am inside if body");
+        // }
+
+        ////////////////////
+
+        // if ("car") { // list of falsy values: https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+
+        //     console.log("I am inside if body");
+
+        // }
+
+        ////////////////////
+
+
+        // if () { // expression is part of syntax and it is required
+        //     console.log("if body");
+        // }
+
+        /////////////////
+
+        // let userInput = 2; // chain statement
+
+        // if (userInput === 1) {
+        //     console.log("you selected menu 1");
+        // } else if (userInput === 2) {
+        //     console.log("you selected menu 2");
+        // } else if (userInput === 3) {
+        //     console.log("you selected menu 3");
+        // } else if (userInput === 4) {
+        //     console.log("you selected menu 4");
+        // } else if (userInput === 5) {
+        //     console.log("you selected menu 5");
+        // } else {
+        //     console.log("if is false");
+        // }
+
+        ///////////////
+
+        let userInput = "mail@email.com"
+
+        if (userInput.length < 3) {
+            console.log("email is too short");
+        }
+
+        if (userInput.length > 30) {
+            console.log("email is too long");
+        }
+
+        if (userInput.substring("@") === -1) {
+            console.log("@ is required in email");
+        }
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
