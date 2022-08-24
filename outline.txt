@@ -7,3 +7,8 @@ Conditional operators 	( ===   !==   <   >  <=   >=  )
 Logical operators 		(&&  ||  !) 
 Loop Statements 		(For loop, map) 
 ES6 functions 
+
+
+Logical operators
+array + for loop
+array + for loop

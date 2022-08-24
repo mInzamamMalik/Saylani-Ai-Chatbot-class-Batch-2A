@@ -16,23 +16,63 @@
     <script>
         let userInput = +prompt("enter your outside temprature");
 
-        if (userInput < 25) {
-            // console.log("please turn off AC");
-            // console.log("please turn off AC");
-            // console.log("please turn off AC");
-            // console.log("please turn off AC");
-            // console.log("please turn off AC");
-        }
+        // if (userInput < 25) {
+        //     // console.log("please turn off AC");
+        //     // console.log("please turn off AC");
+        //     // console.log("please turn off AC");
+        //     // console.log("please turn off AC");
+        //     // console.log("please turn off AC");
+        // }
 
-        let result =
-            (userInput < 25) ?
-                "please turn off AC" : "please turn on AC";
+        // let result =
+        //     (userInput < 25) ?
+        //         "please turn off AC" : "please turn on AC";
 
-        let para = `turn ${(userInput < 25) ? "off" : "on"} AC`
+        // let para = `turn ${(userInput < 25) ? "off" : "on"} AC`
 
-        console.log("para: ", para);
+        // console.log("para: ", para);
 
-        // create an app that takes total and obtained marks, calculate percentage and grade
+        // Assigment: create an app that takes total and obtained marks, calculate percentage and grade
+
+
+        // // userInput from 0% to 100%
+
+        // if (userInput < 0) {
+        //     console.log("Invalid input, please enter number from 0 to 100");
+
+        // } else if (userInput < 50) {
+        //     console.log("you are Fail, minimum passing mark was 50");
+
+        // } else if (userInput < 60) {
+        //     console.log("you have got C grade");
+
+        // } else if (userInput < 70) {
+        //     console.log("you have got B grade");
+
+        // } else if (userInput < 80) {
+        //     console.log("you have got A grade");
+
+        // } else if (userInput <= 100) {
+        //     console.log("you have got A1 grade");
+
+        // } else {
+        //     console.log("Invalid input, please enter number from 0 to 100");
+        // }
+
+
+
+
+
+
+        let para =
+            `you said outside temprature is ${userInput},
+            please ${(
+                (userInput > 25) ? "turn on" :
+                    ((userInput > 20) ? "lower" :
+                        "turn off")
+            )}the AC`
+
+        console.log(para);
 
 
     </script>
