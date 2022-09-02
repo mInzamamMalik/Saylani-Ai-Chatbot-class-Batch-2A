@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Multiplication Table App</h1>
+
+    <form onsubmit="printTable(); return false">
+        which table: <input type="text" id="num" required>
+        <br>
+        how many times: <input type="text" id="times" required value="10">
+
+        <br>
+        <button type="submit">Generate</button>
+    </form>
+
+    <p id="result"></p>
+
+
+    <script>
+        function printTable() {
+            let num = +document.querySelector("#num").value;
+            let times = +document.querySelector("#times").value;
+
+            let result = document.querySelector("#result");
+            result.innerHTML = "";
+
+            for (let i = 0; i < times; i++) {
+
+                console.log("index: ", i);
+                let count = i + 1
+
+                result.innerHTML += `<b>${num} x ${count} = ${num * count}</b> <br>`
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
