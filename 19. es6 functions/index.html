@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>ES6 Functions</h1>
+
+
+    <form onsubmit="submitFunction(); return false">
+        total marks: <input type="number" id="total" required value="100">
+        <br>
+        obtained marks: <input type="number" id="obtained" required>
+        <br>
+        <button>Calculate</button>
+    </form>
+    <h1 id="result"></h1>
+
+    <script>
+
+        // function doSum(num1, num2) {
+        //     return num1 + num2;
+        // }
+        // console.log(  doSum(3, 54)  )
+
+
+        function calcPercentage(total, obtain) {
+            if (!total || !obtain) {
+                return null
+            }
+            if (typeof (total) !== "number" || typeof (obtain) !== "number") {
+                return null
+            }
+            if (obtain > total) {
+                return null
+            }
+            let per = (obtain * 100) / total;
+            per = per.toFixed(0);
+            per = Number(per);
+            return per;
+        }
+
+        function submitFunction() {
+            let total = +document.querySelector("#total").value
+            let obtained = +document.querySelector("#obtained").value
+
+            let result = calcPercentage(total, obtained);
+
+            if (result) {
+                document.querySelector("#result").innerHTML = result;
+            } else {
+                document.querySelector("#result").innerHTML = `Invalid input`;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
