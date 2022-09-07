@@ -28,7 +28,6 @@
         // }
         // console.log(  doSum(3, 54)  )
 
-
         function calcPercentage(total, obtain) {
             if (!total || !obtain) {
                 return null
@@ -45,6 +44,8 @@
             return per;
         }
 
+        console.log("per: ", per);
+
         function submitFunction() {
             let total = +document.querySelector("#total").value
             let obtained = +document.querySelector("#obtained").value
@@ -57,6 +58,55 @@
                 document.querySelector("#result").innerHTML = `Invalid input`;
             }
         }
+
+
+
+
+
+
+        // // es5 
+        // // hoisting
+        // // named function
+
+        // function doSum(num1, num2) {
+        //     return num1 + num2
+        // }
+
+        ///////////////////
+
+
+        // // es5
+        // // no hoisting
+        // // anonymous function
+
+        // (function(num1, num2) {
+        //     return num1 + num2
+        // })() // self calling
+
+        // let doSum = function (num1, num2) {
+        //     return num1 + num2
+        // }
+
+        //////////////////////
+
+        // // es6
+        // // no hoisting
+        // let doSum = (num1, num2) => {
+        //     return num1 + num2
+        // }
+        // doSum(2,4);
+
+        // // if you have 1 line liner function, no need of curly braces or return keyword
+        // let doSum = (num1, num2) => num1 + num2;
+        // doSum(2,4);
+
+        // // if you have 1 param, no need of parentheses
+        // let calCube = num => num * num * num;
+        // calCube(6);
+
+
+
+
 
     </script>
 </body>
