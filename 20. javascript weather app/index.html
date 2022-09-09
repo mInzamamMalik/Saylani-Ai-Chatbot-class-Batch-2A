@@ -8,6 +8,15 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <style>
+        .weatherCard {
+            border: 1px solid black;
+            margin-top: 30px;
+            border-radius: 30px;
+            padding: 10px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -19,7 +28,12 @@
         <br>
         <button>get weather</button>
     </form>
-    <h1 id="result"></h1>
+
+    <div class="weatherCard">
+        <span id="upResult"></span>
+        <h1 id="result"></h1>
+        <span id="downResult"></span>
+    </div>
 
     <script>
 
@@ -34,6 +48,13 @@
                 .then(function (response) {
                     // handle success
                     console.log(response.data);
+                   
+                    document.querySelector("#result").innerHTML =
+                        `${response.data.main.temp}°C`;
+                    document.querySelector("#upResult").innerHTML =
+                        response.data.name;
+                    document.querySelector("#downResult").innerHTML =
+                        `${response.data.main.temp_min}°C - ${response.data.main.temp_max}°C `;
                 })
                 .catch(function (error) {
                     // handle error
