@@ -7,13 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <style>
         .weatherCard {
             border: 1px solid black;
             margin-top: 30px;
             border-radius: 30px;
             padding: 10px;
+        }
+
+        #forecast {
+            display: flex;
+            overflow-x: scroll;
+        }
+
+        #forecast>div {
+            width: 190px;
+            margin: 15px;
+            padding: 50px;
+
         }
     </style>
 
@@ -29,32 +41,79 @@
         <button>get weather</button>
     </form>
 
-    <div class="weatherCard">
-        <span id="upResult"></span>
-        <h1 id="result"></h1>
-        <span id="downResult"></span>
-    </div>
+    <div id="current"></div>
+
+    <div id="forecast"> </div>
+
+
 
     <script>
+
+        // let formatedTime = moment("2022-09-12 21:00:00").format("ddd ha");
+        // console.log("formatedTime: ", formatedTime);
+
 
         function submitFunction() {
             let cityName = document.querySelector("#cityName").value
 
             console.log("cityName: ", cityName);
 
-            // TODO: get weather for this city 
-
+            // get current weather 
             axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=e0f99c494c2ce394a18cc2fd3f100543&units=metric`)
                 .then(function (response) {
+
+                    document.querySelector("#current").innerHTML =
+                        `<div class="weatherCard">
+                        <span id="upResult"></span>
+                        <h1 id="result"></h1>
+                        <img src="" id="icon" />
+                        <br />
+                        <span id="downResult"></span>
+                    </div>`
+
+
                     // handle success
                     console.log(response.data);
-                   
+
                     document.querySelector("#result").innerHTML =
                         `${response.data.main.temp}°C`;
                     document.querySelector("#upResult").innerHTML =
-                        response.data.name;
+                        `${response.data.name} <br/> Now`;
                     document.querySelector("#downResult").innerHTML =
                         `${response.data.main.temp_min}°C - ${response.data.main.temp_max}°C `;
+
+                    document.querySelector("#icon").src = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+
+            // get 5 day forecast
+            axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=e0f99c494c2ce394a18cc2fd3f100543&units=metric`)
+                .then(function (response) {
+
+
+                    console.log("forecast: ", response.data);
+
+                    let forecastDiv = document.querySelector("#forecast");
+                    forecastDiv.innerHTML = ""
+
+                    response.data.list.map(eachItem => {
+
+                        forecastDiv.innerHTML +=
+                            `<div class="weatherCard">
+                                <span>${moment(eachItem.dt_txt).format("ddd D/M")}</span>
+                                <br/>
+                                <span>${moment(eachItem.dt_txt).format("ha")}</span>
+                                <h1 >${eachItem?.main?.temp.toFixed(0)}°C</h1>
+                                <span>${eachItem?.weather[0].description}</span>
+
+                                <img src="https://openweathermap.org/img/wn/${eachItem?.weather[0]?.icon}@2x.png"/>
+                                <br />
+                                <span>${eachItem?.main?.temp_min.toFixed(0)}°C - ${eachItem?.main?.temp_min.toFixed(0)}°C </span>
+                                </div>`
+                    })
                 })
                 .catch(function (error) {
                     // handle error
