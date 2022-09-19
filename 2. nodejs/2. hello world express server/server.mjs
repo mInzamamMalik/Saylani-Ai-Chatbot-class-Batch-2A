@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-    console.log("someone is requesting on this server", new Date());
+    console.log("someone is requesting on this server", req.ip);
     
     res.send('Hello World from Sir Inzamam Computer!')
 })
