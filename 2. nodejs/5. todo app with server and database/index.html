@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>Todo App with server</h1>
+
+    <form onsubmit="postTodo(); return false">
+        todo: <input id="todo" type="text" required>
+        <button type="submit">Add</button>
+    </form>
+    <button onclick="getAllTodos()">Refresh</button>
+
+    <h3 id="result"> </h3>
+
+    <script>
+        function postTodo() {
+            let todoText = document.querySelector("#todo").value
+
+            axios.post(`http://localhost:3000/todo`, {
+                text: todoText
+            })
+                .then(function (response) {
+                    console.log(response.data);
+
+                    document.querySelector("#result").innerHTML = ""
+
+                    response.data.data.map(eachTodo => {
+                        document.querySelector("#result").innerHTML += eachTodo
+                        document.querySelector("#result").innerHTML += '<br>'
+                    })
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+
+        }
+
+        function getAllTodos() {
+            axios.get(`http://localhost:3000/todos`)
+                .then(function (response) {
+                    console.log(response.data);
+
+                    document.querySelector("#result").innerHTML = ""
+
+                    response.data.data.map(eachTodo => {
+                        document.querySelector("#result").innerHTML += eachTodo
+                        document.querySelector("#result").innerHTML += '<br>'
+                    })
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
+
+        setInterval(getAllTodos, 1000);
+
+    </script>
+
+
+</body>
+
+</html>
