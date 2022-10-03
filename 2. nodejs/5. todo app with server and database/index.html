@@ -30,12 +30,12 @@
                 .then(function (response) {
                     console.log(response.data);
 
-                    document.querySelector("#result").innerHTML = ""
+                    document.querySelector("#result").innerHTML = response.data.message
 
-                    response.data.data.map(eachTodo => {
-                        document.querySelector("#result").innerHTML += eachTodo
-                        document.querySelector("#result").innerHTML += '<br>'
-                    })
+                    // response.data.data.map(eachTodo => {
+                    //     document.querySelector("#result").innerHTML += eachTodo
+                    //     document.querySelector("#result").innerHTML += '<br>'
+                    // })
 
                 })
                 .catch(function (error) {
@@ -52,7 +52,7 @@
                     document.querySelector("#result").innerHTML = ""
 
                     response.data.data.map(eachTodo => {
-                        document.querySelector("#result").innerHTML += eachTodo
+                        document.querySelector("#result").innerHTML += eachTodo.text
                         document.querySelector("#result").innerHTML += '<br>'
                     })
 
