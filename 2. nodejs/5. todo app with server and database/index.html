@@ -18,11 +18,16 @@
     </form>
     <button onclick="getAllTodos()">Refresh</button>
 
+    <h5 id="message"> </h5>
+
     <h3 id="result"> </h3>
 
     <script>
         function postTodo() {
             let todoText = document.querySelector("#todo").value
+
+            // document.querySelector("#result").innerHTML += todoText;
+            // document.querySelector("#result").innerHTML += '<br>';
 
             axios.post(`http://localhost:3000/todo`, {
                 text: todoText
@@ -30,7 +35,12 @@
                 .then(function (response) {
                     console.log(response.data);
 
-                    document.querySelector("#result").innerHTML = response.data.message
+                    getAllTodos();
+
+                    document.querySelector("#message").innerHTML = response.data.message
+                    setTimeout(() => {
+                        document.querySelector("#message").innerHTML = "";
+                    }, 2000);
 
                     // response.data.data.map(eachTodo => {
                     //     document.querySelector("#result").innerHTML += eachTodo
@@ -62,7 +72,8 @@
                 })
         }
 
-        setInterval(getAllTodos, 1000);
+        getAllTodos();
+        setInterval(getAllTodos, 5000);
 
     </script>
 
