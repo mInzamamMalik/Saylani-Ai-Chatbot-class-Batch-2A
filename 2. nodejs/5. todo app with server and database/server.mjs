@@ -52,6 +52,32 @@ app.get('/todos', (req, res) => {
     });
 })
 
+app.put('/todo/:id', async (req, res) => {
+
+    try {
+        let data = await todoModel
+            .findByIdAndUpdate(
+                req.params.id,
+                { text: req.body.text },
+                { new: true }
+            )
+            .exec();
+
+        console.log('updated: ', data);
+
+        res.send({
+            message: "todo is updated successfully",
+            data: data
+        })
+
+    } catch (error) {
+        res.status(500).send({
+            message: "server error"
+        })
+    }
+})
+
+
 app.delete('/todos', (req, res) => {
 
     todoModel.deleteMany({}, (err, data) => {
